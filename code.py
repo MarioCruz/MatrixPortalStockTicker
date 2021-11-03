@@ -1,6 +1,7 @@
 #MatrixPortal Stock Ticker
 #by Mario the Maker
-#
+#https://github.com/MarioCruz/MatrixPortalStockTicker/
+#Nov 3, 2021
 import time
 import board
 import terminalio
@@ -11,7 +12,7 @@ from adafruit_display_text import label
 #Change the Stock1 to be the Stock Symbol you want
 STOCK1 = "WSO"
 # Set up where we'll be fetching data from
-# Go here https://finnhub.io/ get an free ApiKey
+# Go here https://finnhub.io/ get a free ApiKey
 DATA_SOURCE = (
     "https://finnhub.io/api/v1/quote?symbol=" + STOCK1 + "&token=EnterApiTokenHere"
 )
@@ -108,7 +109,7 @@ matrixportal.add_text(
 last_check = None
 
 while True:
-    if last_check is None or time.monotonic() > last_check + 280:
+    if last_check is None or time.monotonic() > last_check + 280:#How long to wait to get new data in seconds
         try:
             value = matrixportal.fetch()
             print("Response is",value)
@@ -117,4 +118,4 @@ while True:
         except (ValueError, RuntimeError) as e:
             print("Some error occured, retrying! -", e)
     matrixportal.scroll()
-    time.sleep(.0195)
+    time.sleep(.0195) #How Fast to Scroll 
