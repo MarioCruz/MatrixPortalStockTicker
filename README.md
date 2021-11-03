@@ -1,9 +1,8 @@
 # MatrixPortal Stock Tracker / Ticker 
 
-Adafruit Matrix Portal Starter Kit
-
 The MatrixPortal uses WiFi onboard to get the latest stock information for a scroling display.
 
+Build one using Adafruit Matrix Portal Starter Kit
 https://www.adafruit.com/product/4812
 
 
