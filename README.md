@@ -2,7 +2,7 @@
 
 Adafruit Matrix Portal Starter Kit
 
-The MatrixPortal uses WiFi onboard to get the latest stock information for display
+The MatrixPortal uses WiFi onboard to get the latest stock information for a scroling display.
 
 https://www.adafruit.com/product/4812
 
