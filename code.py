@@ -50,7 +50,7 @@ def text_Low(val):
     return "$%g Low" % val
 
 def text_Prevoius(val):
-    return "$%g Prevoius" % val
+    return "$%g Previous" % val
 
 def text_Change(val):
     return "%"+"%g Change" % val
