@@ -40,7 +40,7 @@ matrixportal = MatrixPortal(
 
 
 #Get the JSON data
-#Use this to use chain LED's width=128, height=32, change width (64x2=32) as you add more LED's 
+#Use this to use chain LED's width=128, height=32, change width (64x2=128) as you add more LED's 
 #matrixportal = MatrixPortal(
 #    url=DATA_SOURCE, json_path=(DATA1_LOCATION, DATA2_LOCATION, DATA3_LOCATION, DATA4_LOCATION,DATA5_LOCATION), status_neopixel=board.NEOPIXEL,bit_depth=2, width=128, height=32, debug=True
 #)
