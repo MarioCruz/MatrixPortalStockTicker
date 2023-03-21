@@ -121,3 +121,5 @@ while True:
             supervisor.reload()
     matrixportal.scroll()
     time.sleep(.0205)  # How Fast to Scroll
+
+    
