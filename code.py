@@ -1,12 +1,13 @@
 #MatrixPortal Stock Ticker
 #by Mario the Maker
 #https://github.com/MarioCruz/MatrixPortalStockTicker/
-#Nov 3, 2021
+#Marxh 21, 2023
 import time
 import board
 import terminalio
 from adafruit_matrixportal.matrixportal import MatrixPortal
 from adafruit_display_text import label
+import supervisor
 
 #Prepare Stock Api
 #Change the Stock1 to be the Stock Symbol you want
@@ -14,7 +15,7 @@ STOCK1 = "WSO"
 # Set up where we'll be fetching data from
 # Go here https://finnhub.io/ get a free ApiKey
 DATA_SOURCE = (
-    "https://finnhub.io/api/v1/quote?symbol=" + STOCK1 + "&token=EnterApiTokenHere"
+    "https://finnhub.io/api/v1/quote?symbol=" + STOCK1 + "&token=c0fhokf48v6snribbk60"
 )
 #Parse the Json data
 DATA1_LOCATION = ["c"]  #  Current price
@@ -39,13 +40,6 @@ matrixportal = MatrixPortal(
 )
 
 
-#Get the JSON data
-#Use this to use chain LED's width=128, height=32, change width (64x2=128) as you add more LED's 
-#matrixportal = MatrixPortal(
-#    url=DATA_SOURCE, json_path=(DATA1_LOCATION, DATA2_LOCATION, DATA3_LOCATION, DATA4_LOCATION,DATA5_LOCATION), status_neopixel=board.NEOPIXEL,bit_depth=2, width=128, height=32, debug=True
-#)
-
-
 #Add info to the JSON Data
 def text_Current(val):
     return STOCK1+"  $%g" % val
@@ -57,7 +51,7 @@ def text_Low(val):
     return "$%g Low" % val
 
 def text_Prevoius(val):
-    return "$%g Previous" % val
+    return "$%g Prevoius" % val
 
 def text_Change(val):
     return "%"+"%g Change" % val
@@ -116,13 +110,14 @@ matrixportal.add_text(
 last_check = None
 
 while True:
-    if last_check is None or time.monotonic() > last_check + 280:#How long to wait to get new data in seconds
+    if last_check is None or time.monotonic() > last_check + 280:  # How long to wait to get new data in seconds
         try:
             value = matrixportal.fetch()
-            print("Response is",value)
+            print("Response is", value)
             print(time.monotonic())
             last_check = time.monotonic()
         except (ValueError, RuntimeError) as e:
-            print("Some error occured, retrying! -", e)
+            print("Some error occurred, retrying! -", e)
+            supervisor.reload()
     matrixportal.scroll()
-    time.sleep(.0195) #How Fast to Scroll 
+    time.sleep(.0205)  # How Fast to Scroll
